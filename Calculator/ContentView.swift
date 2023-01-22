@@ -24,7 +24,7 @@ struct ContentView: View {
                     ForEach(row, id: \.self) { button in
                         Text(button)
                             .font(.system(size: 32))
-                            .frame(width: 80, height: 80)
+                            .frame(width: 80, height: 79)
                         
                     }
                 }
