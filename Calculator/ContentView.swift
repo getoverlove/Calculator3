@@ -18,19 +18,31 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        VStack {
-            ForEach(buttons, id: \.self) { row in
-                HStack {
-                    ForEach(row, id: \.self) { button in
-                        Text(button)
-                            .font(.system(size: 32))
-                            .frame(width: 80, height: 77)
-                        
+        ZStack(alignment: .bottom) {
+            Color.black.edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 12) {
+                ForEach(buttons, id: \.self) { row in
+                    HStack {
+                        ForEach(row, id: \.self) { button in
+                            Text(button)
+                                .font(.system(size: 32))
+                                .frame(width: self.buttonWidth(), height: self.buttonWidth())
+                                .foregroundColor(.white)
+                                .background(Color.yellow)
+                                .cornerRadius(40)
+                            
+                        }
                     }
                 }
             }
+            
+            .padding(.bottom)
         }
-        .padding()
+    }
+    
+    func buttonWidth() -> CGFloat {
+        return (UIScreen.main.bounds.width - 5 * 12) / 4
     }
 }
 
